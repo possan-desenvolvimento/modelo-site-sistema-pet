@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | Pet Shop Premium</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/loja.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- MENU TOPO -->
+    <header class="header">
+        <div class="logo">Pet <span>Shop Premium</span></div>
+        <nav class="nav">
+            <!-- Botão para ir para o Agendamento -->
+            <a href="agendamentos.html" style="color: var(--primary-color); font-weight: 900;">📅 Ir para Agendamentos</a>
+            <a href="cliente.html">Voltar ao Início</a>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="loja-container">
+        
+        <!-- BANNER DE DESTAQUE -->
+        <div class="banner-loja">
+            <div class="banner-texto">
+                <h1>Semana do Pet!</h1>
+                <p>Frete grátis em compras acima de R$ 100,00 e brinde exclusivo.</p>
+                <button class="btn-banner" onclick="alert(PetIdiomas.traduzir('Ofertas aplicadas no carrinho!'))">Aproveitar Ofertas</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop" alt="Cachorro Feliz">
+        </div>
+
+        <!-- TÍTULO DA SESSÃO -->
+        <h2 class="titulo-sessao">Nossos Produtos</h2>
+        <p class="subtitulo-sessao">Tudo o que seu pet precisa, com entrega ou retirada na loja.</p>
+
+        <!-- FILTROS -->
+        <div class="filtros-categoria">
+            <button class="filtro-btn active" onclick="filtrarProdutos('todos')">Todos</button>
+            <button class="filtro-btn" onclick="filtrarProdutos('racao')">Rações</button>
+            <button class="filtro-btn" onclick="filtrarProdutos('brinquedo')">Brinquedos</button>
+            <button class="filtro-btn" onclick="filtrarProdutos('higiene')">Higiene</button>
+        </div>
+
+        <!-- GRID DE PRODUTOS (Com as suas imagens) -->
+        <div class="grid-produtos">
+            <!-- Produto 1 -->
+            <div class="card-produto" data-categoria="racao">
+                <div class="tag-destaque">Mais Vendido</div>
+                <div class="img-redonda">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQepPy4EVMVJtAnoKegwKKO9-XfxAyglxUcXAuXzyAcGQ&s=10" alt="Ração Premium">
+                </div>
+                <div class="produto-info">
+                    <h3>Ração Premium para Cães</h3>
+                    <p class="descricao">Sabor Frango e Arroz - Pacote 10kg</p>
+                    <p class="preco">R$ 149,90</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Ração Premium para Cães', 149.90)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="card-produto" data-categoria="brinquedo">
+                <div class="img-redonda">
+                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSHt-Hgy5L87gcJSx4cmBGUNlLQa3-PPRSD9lvmFGXFc19bGwSlmk3mpbnmekq7fcRuXg7VC8VJUiLXvsw9jBe4DskPPcWuDRikA5UxwCes_3nDiqu4RIK3xtqHLce0ThaGpFCpAU8g4A&usqp=CAc" alt="Brinquedo">
+                </div>
+                <div class="produto-info">
+                    <h3>Brinquedo Mordedor</h3>
+                    <p class="descricao">Borracha resistente para cães médios.</p>
+                    <p class="preco">R$ 35,00</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Brinquedo Mordedor', 35.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="card-produto" data-categoria="higiene">
+                <div class="tag-promocao">-15% OFF</div>
+                <div class="img-redonda">
+                    <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=400&auto=format&fit=crop" alt="Shampoo">
+                </div>
+                <div class="produto-info">
+                    <h3>Shampoo Neutro 500ml</h3>
+                    <p class="descricao">Ideal para banho em casa, cheiro suave.</p>
+                    <p class="preco">R$ 45,00</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Shampoo Neutro 500ml', 45.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="card-produto" data-categoria="racao">
+                <div class="img-redonda">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAYIewDZ9IVOnAl5c8af2uFxF6JIoCsTZX2CXUjrBuIA&s=10" alt="Ração Gatos">
+                </div>
+                <div class="produto-info">
+                    <h3>Ração para Gatos Castrados</h3>
+                    <p class="descricao">Sabor Salmão - Pacote 3kg</p>
+                    <p class="preco">R$ 89,90</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Ração para Gatos Castrados', 89.90)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 5 -->
+            <div class="card-produto" data-categoria="brinquedo">
+                <div class="img-redonda">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=400&auto=format&fit=crop" alt="Arranhador">
+                </div>
+                <div class="produto-info">
+                    <h3>Arranhador para Gatos</h3>
+                    <p class="descricao">Poste com brinquedo pendurado.</p>
+                    <p class="preco">R$ 75,00</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Arranhador para Gatos', 75.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 6 -->
+            <div class="card-produto" data-categoria="higiene">
+                <div class="img-redonda">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=400&auto=format&fit=crop" alt="Escova">
+                </div>
+                <div class="produto-info">
+                    <h3>Escova de Pelos</h3>
+                    <p class="descricao">Remove pelos mortos e evita nós.</p>
+                    <p class="preco">R$ 29,90</p>
+                    <button class="btn-comprar" onclick="comprarProduto('Escova de Pelos', 29.90)">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BOTÃO WHATSAPP -->
+    <a href="https://wa.me/5511964801185" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script src="../js/loja.js"></script>
+</body>
+</html>

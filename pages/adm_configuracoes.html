@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_configuracoes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html" class="active">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h1>Configurações</h1>
+                <p>Personalize o sistema com a identidade do seu negócio.</p>
+            </div>
+            <div class="user-info">
+                <span id="nomeTopbar">Olá, Administrador</span>
+                <div class="avatar" id="avatarTopbar">A</div>
+            </div>
+        </header>
+
+        <!-- GRID DE CONFIGURAÇÕES -->
+        <div class="config-grid">
+            
+            <!-- CARD 1: PERFIL DO USUÁRIO -->
+            <div class="card-config">
+                <h2>👤 Perfil do Usuário</h2>
+                <p class="desc-card">Essas informações aparecerão no seu painel.</p>
+                
+                <div class="foto-perfil-area">
+                    <div class="foto-preview" id="fotoPreview">A</div>
+                    <div class="foto-inputs">
+                        <label class="btn-upload">
+                            Alterar Foto
+                            <input type="file" id="inputFoto" accept="image/jpeg,image/png" aria-label="Alterar Foto" class="input-foto">
+                        </label>
+                        <span class="dica">JPG ou PNG. Máx 2MB.</span>
+                        <button type="button" id="removerFoto" class="btn-upload">Remover foto</button>
+                    </div>
+                </div>
+
+                <div class="input-group-config">
+                    <label for="inputNome">Nome de Exibição</label>
+                    <input type="text" id="inputNome" value="Administrador" maxlength="80" required autocomplete="nickname">
+                </div>
+
+                <div class="input-group-config">
+                    <label>E-mail de Acesso</label>
+                    <input type="email" value="admin@petshop.com" disabled style="background: #f0f0f0; cursor: not-allowed;">
+                </div>
+                
+                <button type="button" id="salvarPerfil" class="btn-salvar">Salvar Alterações</button>
+                <p class="dica">As alterações são salvas automaticamente neste navegador, sem envio ao servidor.</p>
+                <p id="statusConfiguracoes" role="status" aria-live="polite"></p>
+            </div>
+
+            <!-- CARD 2: APARÊNCIA DO SISTEMA -->
+            <div class="card-config">
+                <h2>🎨 Aparência do Sistema</h2>
+                <p class="desc-card">Escolha a cor principal do seu painel.</p>
+
+                <div class="opcoes-cores">
+                    <button type="button" class="cor-opcao ativo" style="background-color: #00bcd4;" data-cor="#00bcd4" data-cor-escura="#008ba3" title="Azul Pet (Padrão)" aria-label="Azul Pet (Padrão)" aria-pressed="true"></button>
+                    <button type="button" class="cor-opcao" style="background-color: #2ecc71;" data-cor="#2ecc71" data-cor-escura="#27ae60" title="Verde Natureza" aria-label="Verde Natureza" aria-pressed="false"></button>
+                    <button type="button" class="cor-opcao" style="background-color: #9b59b6;" data-cor="#9b59b6" data-cor-escura="#8e44ad" title="Roxo Premium" aria-label="Roxo Premium" aria-pressed="false"></button>
+                    <button type="button" class="cor-opcao" style="background-color: #f39c12;" data-cor="#f39c12" data-cor-escura="#d68910" title="Laranja Energia" aria-label="Laranja Energia" aria-pressed="false"></button>
+                    <button type="button" class="cor-opcao" style="background-color: #e74c3c;" data-cor="#e74c3c" data-cor-escura="#c0392b" title="Vermelho Paixão" aria-label="Vermelho Paixão" aria-pressed="false"></button>
+                </div>
+
+                <div class="input-group-config" style="margin-top: 25px;">
+                    <label>Modo de Exibição</label>
+                    <select>
+                        <option>Claro (Padrão)</option>
+                        <option>Escuro (Em breve)</option>
+                        <option>Automático (Sistema)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CARD 3: PREFERÊNCIAS E IDIOMA -->
+            <div class="card-config">
+                <h2>🌍 Preferências e Idioma</h2>
+                <p class="desc-card">Configure como o sistema se comunica com você.</p>
+
+                <div class="input-group-config">
+                    <label for="selectIdioma">Idioma do Sistema</label>
+                    <select id="selectIdioma">
+                        <option value="pt">Português (Brasil)</option>
+                        <option value="en">English (US)</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+
+                <div class="input-group-config">
+                    <label>Fuso Horário</label>
+                    <select>
+                        <option>(GMT-03:00) Brasília / São Paulo</option>
+                    </select>
+                </div>
+
+                <div class="toggle-group">
+                    <div class="toggle-text">
+                        <strong>Notificações por E-mail</strong>
+                        <span>Receber resumo diário de agendamentos.</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-group">
+                    <div class="toggle-text">
+                        <strong>Alertas de Estoque</strong>
+                        <span>Avisar quando um produto estiver acabando.</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- CARD 4: SEGURANÇA -->
+            <div class="card-config">
+                <h2>🔒 Segurança</h2>
+                <p class="desc-card">Mantenha sua conta protegida.</p>
+
+                <div class="input-group-config">
+                    <label>Senha Atual</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <div class="input-group-config">
+                    <label>Nova Senha</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <div class="input-group-config">
+                    <label>Confirmar Nova Senha</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+
+                <button class="btn-salvar btn-secundario">Atualizar Senha</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../js/adm.js"></script>
+    <script src="../js/adm_configuracoes.js"></script>
+</body>
+</html>

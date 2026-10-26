@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_financeiro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html" class="active">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h1>Gestão Financeira</h1>
+                <p>Acompanhe o fluxo de caixa do seu negócio.</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- FILTROS DE DATA -->
+        <div class="filtros-painel">
+            <div class="filtro-group">
+                <label>Mês Referência</label>
+                <select>
+                    <option>Outubro 2026</option>
+                    <option>Setembro 2026</option>
+                    <option>Agosto 2026</option>
+                </select>
+            </div>
+            <button class="btn-consultar" onclick="alert('Filtro aplicado!')">Filtrar</button>
+            <button class="btn-adicionar" style="margin-left: auto;" onclick="abrirModalLancamento()">➕ Novo Lançamento</button>
+        </div>
+
+        <!-- CARDS DE RESUMO FINANCEIRO -->
+        <div class="dashboard-cards">
+            <div class="card-dash">
+                <h3>Entradas no Mês</h3>
+                <p class="numero" style="color: #2ecc71;">R$ 12.450,00</p>
+                <span class="variacao positiva">↑ 8% vs mês anterior</span>
+            </div>
+            <div class="card-dash">
+                <h3>Saídas no Mês</h3>
+                <p class="numero" style="color: #e74c3c;">R$ 6.800,00</p>
+                <span class="variacao negativa">↑ 3% vs mês anterior</span>
+            </div>
+            <div class="card-dash">
+                <h3>Saldo em Caixa</h3>
+                <p class="numero" style="color: var(--primary-color);">R$ 5.650,00</p>
+                <span class="variacao">Lucro líquido do período</span>
+            </div>
+            <div class="card-dash">
+                <h3>Contas a Receber</h3>
+                <p class="numero" style="color: #f39c12;">R$ 1.200,00</p>
+                <span class="variacao neutra">3 boletos pendentes</span>
+            </div>
+        </div>
+
+        <!-- GRÁFICO DE FLUXO DE CAIXA -->
+        <div class="card-grafico" style="margin-bottom: 30px;">
+            <div class="grafico-header">
+                <h2>Fluxo de Caixa (Últimos 7 dias)</h2>
+                <div class="legenda">
+                    <span><span class="dot verde"></span> Entradas</span>
+                    <span><span class="dot vermelho"></span> Saídas</span>
+                </div>
+            </div>
+            <div class="grafico-barras-duplas">
+                <!-- Dia 1 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 60%;"></div>
+                    <div class="barra vermelho" style="height: 20%;"></div>
+                    <span>Seg</span>
+                </div>
+                <!-- Dia 2 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 80%;"></div>
+                    <div class="barra vermelho" style="height: 40%;"></div>
+                    <span>Ter</span>
+                </div>
+                <!-- Dia 3 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 45%;"></div>
+                    <div class="barra vermelho" style="height: 15%;"></div>
+                    <span>Qua</span>
+                </div>
+                <!-- Dia 4 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 90%;"></div>
+                    <div class="barra vermelho" style="height: 30%;"></div>
+                    <span>Qui</span>
+                </div>
+                <!-- Dia 5 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 70%;"></div>
+                    <div class="barra vermelho" style="height: 50%;"></div>
+                    <span>Sex</span>
+                </div>
+                <!-- Dia 6 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 100%;"></div>
+                    <div class="barra vermelho" style="height: 25%;"></div>
+                    <span>Sáb</span>
+                </div>
+                <!-- Dia 7 -->
+                <div class="barra-wrapper-dupla">
+                    <div class="barra verde" style="height: 30%;"></div>
+                    <div class="barra vermelho" style="height: 10%;"></div>
+                    <span>Dom</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABELA DE LANÇAMENTOS -->
+        <h2 class="titulo-secao">Últimos Lançamentos</h2>
+        <div class="tabela-container">
+            <table class="tabela-financeiro">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entrada Paga -->
+                    <tr>
+                        <td>
+                            <div class="info-lancamento">
+                                <span class="icone-financeiro entrada">↓</span>
+                                <strong>Serviço: Banho e Tosa (Thor)</strong>
+                            </div>
+                        </td>
+                        <td>Serviços</td>
+                        <td>Hoje, 10:30</td>
+                        <td class="valor-entrada">+ R$ 120,00</td>
+                        <td><span class="tag-status pago">Pago</span></td>
+                        <td><button class="btn-acao">Detalhes</button></td>
+                    </tr>
+                    <!-- Saída Paga -->
+                    <tr>
+                        <td>
+                            <div class="info-lancamento">
+                                <span class="icone-financeiro saida">↑</span>
+                                <strong>Compra de Shampoos (Fornecedor)</strong>
+                            </div>
+                        </td>
+                        <td>Estoque</td>
+                        <td>Hoje, 09:00</td>
+                        <td class="valor-saida">- R$ 450,00</td>
+                        <td><span class="tag-status pago">Pago</span></td>
+                        <td><button class="btn-acao">Detalhes</button></td>
+                    </tr>
+                    <!-- Entrada Pendente -->
+                    <tr>
+                        <td>
+                            <div class="info-lancamento">
+                                <span class="icone-financeiro entrada">↓</span>
+                                <strong>Venda de Ração (Maria Oliveira)</strong>
+                            </div>
+                        </td>
+                        <td>Produtos</td>
+                        <td>Ontem, 18:00</td>
+                        <td class="valor-entrada">+ R$ 149,90</td>
+                        <td><span class="tag-status pendente">Pendente</span></td>
+                        <td><button class="btn-acao">Baixar</button></td>
+                    </tr>
+                    <!-- Saída Atrasada -->
+                    <tr class="linha-alerta-financeiro">
+                        <td>
+                            <div class="info-lancamento">
+                                <span class="icone-financeiro saida">↑</span>
+                                <strong>Conta de Luz (Enel)</strong>
+                            </div>
+                        </td>
+                        <td>Fixas</td>
+                        <td>Venceu há 2 dias</td>
+                        <td class="valor-saida">- R$ 380,00</td>
+                        <td><span class="tag-status atrasado">Atrasado</span></td>
+                        <td><button class="btn-acao btn-pagar">Pagar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- MODAL DE NOVO LANÇAMENTO (Simulação) -->
+    <div id="modalLancamento" class="modal-disparo">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalLancamento()">&times;</span>
+            <h2>Novo Lançamento</h2>
+            <p>Adicione uma nova entrada ou saída no caixa.</p>
+            
+            <div class="input-group" style="margin-bottom: 15px; text-align: left;">
+                <label style="font-weight: 700; font-size: 13px; color: var(--text-gray);">Descrição</label>
+                <input type="text" placeholder="Ex: Pagamento Fornecedor" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px;">
+            </div>
+            
+            <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                <button class="btn-acao" style="flex: 1; padding: 12px; border: 2px solid #2ecc71; color: #2ecc71; background: transparent;">Entrada (↓)</button>
+                <button class="btn-acao" style="flex: 1; padding: 12px; border: 2px solid #e74c3c; color: #e74c3c; background: transparent;">Saída (↑)</button>
+            </div>
+
+            <button class="btn-enviar-whats" style="background-color: var(--primary-color);" onclick="fecharModalLancamento()">Salvar Lançamento</button>
+        </div>
+    </div>
+
+    <script src="../js/adm_financeiro.js"></script>
+</body>
+</html>

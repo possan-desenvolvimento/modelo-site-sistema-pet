@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento | Pet Shop Premium</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/agendamentos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">Pet <span>Shop Premium</span></div>
+        <nav class="nav">
+            <a href="loja.html">🛒 Ver Produtos</a>
+            <a href="cliente.html">Voltar ao Início</a>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="agendamento-main">
+        
+        <div class="agendamento-header">
+            <h1>Agende o Banho & Tosa</h1>
+            <p>Escolha o melhor dia e horário para o seu melhor amigo. É rapidinho!</p>
+        </div>
+
+        <div class="agendamento-card">
+            <form id="formAgendamento">
+                
+                <!-- PASSO 1 E 2: NOME E TELEFONE -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>1. Seu Nome</label>
+                        <input type="text" id="nomeCliente" placeholder="Ex: João Silva" required>
+                    </div>
+                    <div class="input-group">
+                        <label>2. Seu WhatsApp</label>
+                        <input type="tel" id="telCliente" placeholder="(11) 99999-9999" maxlength="15" required>
+                    </div>
+                </div>
+
+                <!-- PASSO 3: CALENDÁRIO VISUAL -->
+                <div class="input-group">
+                    <label>3. Escolha o Dia (Seg a Sáb)</label>
+                    <div class="calendario-dias" id="calendarioDias">
+                        <!-- Dias gerados via JS -->
+                    </div>
+                </div>
+
+                <!-- PASSO 4: HORÁRIOS -->
+                <div class="input-group">
+                    <label>4. Escolha o Horário (09h às 17h)</label>
+                    <div class="grid-horarios" id="gridHorarios">
+                        <!-- Horários gerados via JS -->
+                    </div>
+                </div>
+
+                <!-- BOTÃO CONFIRMAR -->
+                <button type="submit" class="btn-confirmar-agendamento" id="btnConfirmar" disabled>Confirmar Agendamento</button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- POP-UP DE CONFIRMAÇÃO (MODAL SUCESSO) -->
+    <div id="modalSucesso" class="modal-sucesso">
+        <div class="modal-sucesso-content">
+            <div class="icone-sucesso">🐾</div>
+            <h2>Agendamento Solicitado!</h2>
+            <p id="resumoAgendamento"></p>
+            <p class="aviso-whats">Você será redirecionado para o WhatsApp para confirmar com a nossa equipe.</p>
+            <button class="btn-fechar-sucesso" onclick="fecharModalSucesso()">Entendi</button>
+        </div>
+    </div>
+
+    <script src="../js/agendamentos.js"></script>
+</body>
+</html>

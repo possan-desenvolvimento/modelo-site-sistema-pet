@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_escolha.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html" class="active" aria-current="page">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <main class="main-content" style="align-items: center; justify-content: center; display: flex; flex-direction: column;">
+        <div class="escolha-container">
+            <h1>O que você deseja gerenciar?</h1>
+            <p>Selecione uma das opções abaixo para continuar.</p>
+
+            <div class="escolha-opcoes">
+                <a href="adm_estoque.html" class="btn-escolha">
+                    <span class="icone">📦</span>
+                    <h3>Estoque</h3>
+                    <p>Quantidade, alertas e validade.</p>
+                </a>
+
+                <a href="adm_gestao_produtos.html" class="btn-escolha">
+                    <span class="icone">🏷️</span>
+                    <h3>Produtos</h3>
+                    <p>Cadastro, preços e fotos.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/adm.js"></script>
+</body>
+</html>

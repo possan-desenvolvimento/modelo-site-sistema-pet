@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_agendamentos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html" class="active">Agendamentos</a>
+            <a href="adm_produtos.html">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h1>Gestão de Agendamentos</h1>
+                <p>Visualize o calendário e a agenda do dia.</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="agendamentos-top-grid">
+            
+            <!-- COLUNA ESQUERDA: CALENDÁRIO -->
+            <div class="card-calendario">
+                <div class="calendario-header">
+                    <h2 id="mesAnoAtual">Outubro 2026</h2>
+                    <div class="calendario-nav">
+                        <button onclick="mudarMes(-1)">&lt;</button>
+                        <button onclick="mudarMes(1)">&gt;</button>
+                    </div>
+                </div>
+                
+                <div class="calendario-grid" id="calendarioGrid">
+                    <!-- Dias da semana -->
+                    <div class="dia-semana">Dom</div>
+                    <div class="dia-semana">Seg</div>
+                    <div class="dia-semana">Ter</div>
+                    <div class="dia-semana">Qua</div>
+                    <div class="dia-semana">Qui</div>
+                    <div class="dia-semana">Sex</div>
+                    <div class="dia-semana">Sáb</div>
+                    <!-- Os dias do mês serão injetados aqui pelo JS -->
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: AGENDA DE HOJE -->
+            <div class="card-agenda">
+                <div class="card-agenda-header">
+                    <h2>Agendamentos de Hoje</h2>
+                    <span id="dataHoje" class="data-destaque">26/10</span>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">09:00</div>
+                        <div class="timeline-content">
+                            <h3>Banho e Tosa - Thor</h3>
+                            <p>João Silva • Tosa Higiênica</p>
+                        </div>
+                        <span class="status concluido">Feito</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:30</div>
+                        <div class="timeline-content">
+                            <h3>Banho - Mel</h3>
+                            <p>Maria Oliveira • Porte Pequeno</p>
+                        </div>
+                        <span class="status andamento">Em Curso</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">14:00</div>
+                        <div class="timeline-content">
+                            <h3>Tosa da Raça - Rex</h3>
+                            <p>Carlos Souza • Porte Grande</p>
+                        </div>
+                        <span class="status agendado">Confirmado</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">15:30</div>
+                        <div class="timeline-content">
+                            <h3>Banho - Luna</h3>
+                            <p>Fernanda Lima • Porte Médio</p>
+                        </div>
+                        <span class="status agendado">Confirmado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO INFERIOR: MÉTRICAS -->
+        <div class="agendamentos-bottom-grid">
+            
+            <div class="card-metrica">
+                <h2>Serviços Mais Agendados</h2>
+                <div class="lista-mais-agendados">
+                    <div class="item-agendado">
+                        <span>1. Banho Relaxante</span>
+                        <span class="porcentagem">45%</span>
+                    </div>
+                    <div class="item-agendado">
+                        <span>2. Tosa Higiênica</span>
+                        <span class="porcentagem">30%</span>
+                    </div>
+                    <div class="item-agendado">
+                        <span>3. Tosa da Raça</span>
+                        <span class="porcentagem">25%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-metrica">
+                <h2>Resumo do Dia</h2>
+                <div class="resumo-dia">
+                    <div class="resumo-item">
+                        <span>Total Agendado</span>
+                        <strong>12</strong>
+                    </div>
+                    <div class="resumo-item">
+                        <span>Concluídos</span>
+                        <strong style="color: #2ecc71;">5</strong>
+                    </div>
+                    <div class="resumo-item">
+                        <span>Pendentes</span>
+                        <strong style="color: #f39c12;">7</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-metrica">
+                <h2>Faturamento Estimado</h2>
+                <div class="resumo-dia">
+                    <div class="resumo-item">
+                        <span>Serviços (Hoje)</span>
+                        <strong>R$ 850,00</strong>
+                    </div>
+                    <div class="resumo-item">
+                        <span>Produtos (Hoje)</span>
+                        <strong>R$ 320,00</strong>
+                    </div>
+                    <div class="resumo-item" style="border-top: 2px solid #eee; padding-top: 10px; margin-top: 10px;">
+                        <span>Total</span>
+                        <strong style="color: var(--primary-color); font-size: 18px;">R$ 1.170,00</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="../js/adm_agendamentos.js"></script>
+</body>
+</html>

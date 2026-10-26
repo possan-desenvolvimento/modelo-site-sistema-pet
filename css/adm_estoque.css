@@ -1,0 +1,110 @@
+/* BARRA DE ALERTA */
+.alerta-estoque {
+    background-color: #fff3e0;
+    border-left: 5px solid #f57c00;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+.alerta-estoque .icone-alerta { font-size: 30px; }
+.alerta-estoque strong { color: #e65100; font-size: 16px; display: block; margin-bottom: 3px; }
+.alerta-estoque p { color: #bf360c; font-size: 14px; }
+
+/* FERRAMENTAS */
+.barra-ferramentas {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.input-pesquisa {
+    width: 400px;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+.input-pesquisa:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(0, 188, 212, 0.1); }
+.btn-adicionar {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-adicionar:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+
+/* TABELA */
+.tabela-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    overflow: hidden; /* Para as bordas arredondadas funcionarem na tabela */
+}
+.tabela-estoque {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.tabela-estoque th {
+    background-color: #f8f9fa;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+}
+.tabela-estoque td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    color: var(--dark-bg);
+    font-size: 14px;
+}
+.tabela-estoque tr:last-child td { border-bottom: none; }
+.tabela-estoque tr:hover { background-color: #fafafa; }
+
+/* LINHA DE ALERTA */
+.linha-alerta { background-color: #fef5f5; }
+.linha-alerta:hover { background-color: #fce8e8 !important; }
+
+/* INFO DO PRODUTO (Foto + Nome) */
+.info-produto { display: flex; align-items: center; gap: 15px; }
+.info-produto img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+.info-produto strong { font-weight: 700; color: var(--dark-bg); }
+
+/* TAGS DE STATUS */
+.tag-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.tag-status.normal { background-color: #e8f5e9; color: #2e7d32; }
+.tag-status.baixo { background-color: #ffebee; color: #c62828; }
+
+/* BOTÕES DE AÇÃO */
+.btn-acao {
+    background-color: #f4f6f9;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+    color: var(--text-gray);
+}
+.btn-acao:hover { background-color: #e0e0e0; color: var(--dark-bg); }
+.btn-repor { background-color: #ffebee; color: #c62828; }
+.btn-repor:hover { background-color: #c62828; color: #fff; }

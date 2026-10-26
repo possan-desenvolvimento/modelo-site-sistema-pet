@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop Premium | Itapevi - SP</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/cliente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- MENU TOPO -->
+    <header class="header">
+        <div class="logo">Pet <span>Shop Premium</span></div>
+        <nav class="nav">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#servicos">Serviços</a>
+        </nav>
+        <div class="header-acoes">
+            <a href="../index.html" class="btn-voltar-acesso">← Cliente ou Administrador</a>
+            <button class="btn-primary" onclick="abrirModalEscolha()">Loja & Agendamento</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Amor e cuidado para o seu melhor amigo.</h1>
+            <p>Banho, tosa e bem-estar animal com profissionais apaixonados pelo que fazem.</p>
+            <button class="btn-large" onclick="abrirModalEscolha()">Acessar Loja</button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: SOBRE -->
+    <section id="sobre" class="section">
+        <h2 class="title">Cuidado que transforma</h2>
+        <p class="subtitle">Por que a rotina de higiene e bem-estar é essencial?</p>
+        
+        <div class="sobre-container">
+            <div class="sobre-texto">
+                <p>Manter a higiene do seu pet em dia vai muito além da estética. O banho regular previne doenças de pele, elimina parasitas e mantém a pelagem saudável e brilhante.</p>
+                <p>Além disso, a tosa adequada evita o superaquecimento em dias quentes e proporciona conforto. Na nossa unidade, cada animal é tratado de forma única, com produtos hipoalergênicos e atendimento calmo e carinhoso.</p>
+            </div>
+            <div class="sobre-imagem">
+                <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800&auto=format&fit=crop" alt="Cuidado com o Pet">
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="section bg-light">
+        <h2 class="title">Nossa Galeria</h2>
+        <p class="subtitle">Veja um pouco do nosso dia a dia.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="slide"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop" alt="Pet 1"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=600&auto=format&fit=crop" alt="Pet 2"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=600&auto=format&fit=crop" alt="Pet 3"></div>
+            </div>
+            <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+            <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: SERVIÇOS -->
+    <section id="servicos" class="section">
+        <h2 class="title">Nossos Serviços</h2>
+        <p class="subtitle">Cuidado completo para cães e gatos.</p>
+        
+        <div class="grid-servicos">
+            <div class="card-servico">
+                <div class="card-img"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=600&auto=format&fit=crop" alt="Banho"></div>
+                <div class="card-info">
+                    <h3>Banho Relaxante</h3>
+                    <p class="preco">A partir de R$ 40,00</p>
+                    <p class="tempo">1 hora</p>
+                    <button class="btn-primary" onclick="abrirModalEscolha()">Agendar</button>
+                </div>
+            </div>
+            <div class="card-servico">
+                <div class="card-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNtF3nZzHoM5b1qPNaJmiMOo0X3WheyFONTl2-yUXNEw&s=10" alt="Tosa"></div>
+                <div class="card-info">
+                    <h3>Tosa Higiênica</h3>
+                    <p class="preco">A partir de R$ 50,00</p>
+                    <p class="tempo">1h 30min</p>
+                    <button class="btn-primary" onclick="abrirModalEscolha()">Agendar</button>
+                </div>
+            </div>
+            <div class="card-servico">
+                <div class="card-img"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop" alt="Tosa da Raça"></div>
+                <div class="card-info">
+                    <h3>Tosa da Raça</h3>
+                    <p class="preco">A partir de R$ 80,00</p>
+                    <p class="tempo">2 horas</p>
+                    <button class="btn-primary" onclick="abrirModalEscolha()">Agendar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo">Pet <span>Shop Premium</span></div>
+                <p class="footer-desc">Cuidando do seu melhor amigo com amor e profissionalismo.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato & Redes</h4>
+                <ul class="footer-contact-list">
+                    <li>📍 Av. Cesário de Abreu, 220 - Centro, Itapevi - SP</li>
+                    <li>📱 (11) 96480-1185</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <a href="https://seusite.com.br" target="_blank" class="footer-link">LP Automações & Soluções</a>.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- MODAL DE ESCOLHA (LOJA OU AGENDAMENTO)     -->
+    <!-- ========================================== -->
+    <div id="modalEscolha" class="modal-escolha">
+        <div class="modal-escolha-content">
+            <span class="close-escolha" onclick="fecharModalEscolha()">&times;</span>
+            <h2>Como podemos te ajudar?</h2>
+            <p>Escolha uma das opções abaixo:</p>
+            
+            <div class="opcoes-loja">
+                <!-- Opção 1: Produtos -->
+                <button class="btn-opcao" onclick="irParaProdutos()">
+                    <span class="icone-opcao">🛒</span>
+                    <span class="titulo-opcao">Produtos</span>
+                    <span class="sub-opcao">Comprar rações e brinquedos</span>
+                </button>
+                
+                <!-- Opção 2: Agendamentos -->
+                <button class="btn-opcao" onclick="irParaAgendamentos()">
+                    <span class="icone-opcao">📅</span>
+                    <span class="titulo-opcao">Agendamentos</span>
+                    <span class="sub-opcao">Marcar banho e tosa</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5511964801185" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script src="../js/cliente.js"></script>
+</body>
+</html>

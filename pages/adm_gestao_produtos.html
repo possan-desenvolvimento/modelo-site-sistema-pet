@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Produtos | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_produtos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script defer src="../js/adm.js"></script>
+    <script defer src="../js/adm_produtos.js"></script>
+</head>
+<body class="pagina-produtos">
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm" aria-label="Menu administrativo">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html" class="active">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">
+                <span class="produtos-eyebrow">CATÁLOGO DA LOJA</span>
+                <h1>Gestão de Produtos</h1>
+                <p>Cadastre e gerencie os itens da loja</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar" aria-label="Administrador">A</div>
+            </div>
+        </header>
+
+        <div class="produtos-resumo" aria-label="Resumo do catálogo">
+            <div><span>Produtos cadastrados</span><strong id="totalProdutos">5</strong></div>
+            <div><span>Itens em estoque</span><strong id="totalEstoque">103</strong></div>
+            <div class="resumo-alerta"><span>Estoque baixo · até 5 un.</span><strong id="totalBaixo">1</strong></div>
+        </div>
+
+        <section class="produtos-card" aria-labelledby="tituloCatalogo">
+            <div class="produtos-card-header">
+                <div><h2 id="tituloCatalogo">Seus produtos</h2><p>Um catálogo organizado para cuidar de cada pet.</p></div>
+                <a class="produtos-link" href="adm_estoque.html">Controle de estoque →</a>
+            </div>
+            <div class="produtos-toolbar">
+                <div class="produtos-busca">
+                    <label class="sr-only" for="pesquisaProduto">Pesquisar por nome, categoria ou código de barras</label>
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" id="pesquisaProduto" placeholder="Buscar nome, categoria ou código..." autocomplete="off">
+                </div>
+                <button type="button" class="produtos-btn produtos-btn-primary" id="cadastrarProduto">➕ Cadastrar Produto (Leitor)</button>
+            </div>
+            <div class="produtos-tabela-scroll" role="region" aria-label="Tabela de produtos" tabindex="0">
+                <table class="produtos-tabela">
+                    <caption class="sr-only">Catálogo de produtos da loja</caption>
+                    <thead><tr>
+                        <th scope="col">Imagem</th><th scope="col">Nome do Produto</th>
+                        <th scope="col">Categoria</th><th scope="col">Preço</th>
+                        <th scope="col">Estoque</th><th scope="col">Status</th><th scope="col">Ações</th>
+                    </tr></thead>
+                    <tbody id="produtosTabela"></tbody>
+                </table>
+            </div>
+            <p class="produtos-rodape" id="resultadoPesquisa" role="status"></p>
+        </section>
+        <p class="produtos-demo">Ambiente de demonstração: os cadastros e as edições ficam somente nesta página e são reiniciados ao recarregar. O controle de estoque possui dados demonstrativos independentes.</p>
+        <p id="notificacaoProdutos" class="produtos-notificacao" role="status" aria-live="polite"></p>
+        <noscript><p class="produtos-erro">Ative o JavaScript para visualizar e gerenciar os produtos.</p></noscript>
+    </main>
+
+    <dialog id="modalProduto" class="produtos-modal" aria-labelledby="tituloModal" aria-describedby="descricaoModal">
+        <div class="produtos-modal-header">
+            <div><span class="produtos-eyebrow">CATÁLOGO DA LOJA</span><h2 id="tituloModal">Cadastrar produto</h2></div>
+            <button type="button" class="produtos-fechar" id="fecharModal" aria-label="Fechar cadastro">×</button>
+        </div>
+        <p id="descricaoModal">Preencha os dados ou use a câmera para ler o código de barras.</p>
+        <div class="produtos-tabs" role="tablist" aria-label="Modo de cadastro">
+            <button type="button" role="tab" id="abaManual" aria-controls="painelManual" aria-selected="true">Cadastro Manual</button>
+            <button type="button" role="tab" id="abaScanner" aria-controls="painelScanner" aria-selected="false" tabindex="-1">Escanear Código</button>
+        </div>
+
+        <div id="painelScanner" role="tabpanel" aria-labelledby="abaScanner" hidden>
+            <div class="produtos-scan-area">
+                <span class="produtos-scan-icone" aria-hidden="true">▥</span>
+                <h3>Posicione o código de barras</h3>
+                <p>Mantenha o EAN-13 inteiro no enquadramento e em um local iluminado.</p>
+                <div id="leitorCodigo"></div>
+            </div>
+            <p id="statusScanner" class="produtos-scan-status" role="status" aria-live="polite"></p>
+            <button type="button" class="produtos-btn produtos-btn-secondary" id="tentarCamera">Tentar câmera novamente</button>
+            <p class="produtos-ajuda">Permita o acesso à câmera. O leitor requer HTTPS ou localhost. Você também pode digitar o código na aba manual.</p>
+        </div>
+
+        <div id="painelManual" role="tabpanel" aria-labelledby="abaManual">
+            <p id="sucessoLeitura" class="produtos-scan-sucesso" role="status" hidden>✓ Código lido com sucesso! Complete os dados abaixo.</p>
+            <form id="formProduto">
+                <div class="produtos-form-grid">
+                    <div class="produtos-campo campo-inteiro">
+                        <label for="nomeProduto">Nome do produto <span>*</span></label>
+                        <input id="nomeProduto" name="nome" required maxlength="100" placeholder="Ex.: Ração Premium Cães 10kg">
+                    </div>
+                    <div class="produtos-campo campo-inteiro">
+                        <label for="codigoBarras">Código de Barras <small>(opcional)</small></label>
+                        <input id="codigoBarras" name="codigo" inputmode="numeric" pattern="[0-9]{13}" maxlength="13" placeholder="13 dígitos do EAN-13" aria-describedby="ajudaCodigo">
+                        <small id="ajudaCodigo">A leitura preenche somente o código; os demais dados são informados manualmente.</small>
+                    </div>
+                    <div class="produtos-campo">
+                        <label for="categoriaProduto">Categoria <span>*</span></label>
+                        <select id="categoriaProduto" name="categoria" required>
+                            <option value="">Selecione</option><option>Rações</option><option>Brinquedos</option>
+                            <option>Higiene</option><option>Acessórios</option><option>Petiscos</option>
+                        </select>
+                    </div>
+                    <div class="produtos-campo">
+                        <label for="precoProduto">Preço (R$) <span>*</span></label>
+                        <input id="precoProduto" name="preco" type="number" min="0.01" max="999999.99" step="0.01" placeholder="0,00" required>
+                    </div>
+                    <div class="produtos-campo">
+                        <label for="estoqueProduto">Estoque (un.) <span>*</span></label>
+                        <input id="estoqueProduto" name="estoque" type="number" min="0" max="999999" step="1" placeholder="0" required>
+                    </div>
+                    <div class="produtos-campo">
+                        <label for="imagemProduto">URL da imagem <small>(opcional)</small></label>
+                        <input id="imagemProduto" name="imagem" type="url" placeholder="https://..." aria-describedby="ajudaImagem">
+                        <small id="ajudaImagem">Use uma URL HTTPS ou HTTP.</small>
+                    </div>
+                </div>
+                <div class="produtos-modal-footer">
+                    <button type="button" class="produtos-btn produtos-btn-secondary" id="cancelarProduto">Cancelar</button>
+                    <button type="submit" class="produtos-btn produtos-btn-primary" id="salvarProduto">Salvar produto</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+</body>
+</html>

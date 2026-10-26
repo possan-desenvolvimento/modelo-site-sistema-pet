@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso | Pet Shop Premium</title>
+    <script defer src="js/idiomas.js"></script>
+    <script defer src="js/preferencias.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            
+            <!-- LOGO REDONDO NO TOPO -->
+            <div class="logo-container">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=200&auto=format&fit=crop" alt="Logo Pet Shop">
+            </div>
+
+            <h2 id="titulo-boas-vindas">Bem-vindo ao Pet Shop</h2>
+            <p id="subtitulo-boas-vindas">Como você deseja acessar o sistema?</p>
+
+            <!-- ETAPA 1: ESCOLHA DE PERFIL -->
+            <div id="etapa-escolha" class="etapa-ativa">
+                <div class="opcoes-perfil">
+                    <button class="btn-perfil btn-cliente" onclick="acessarCliente()">
+                        <span class="icone">🐶</span>
+                        <span class="texto">Sou Cliente</span>
+                        <span class="subtexto">Agendar serviços</span>
+                    </button>
+                    
+                    <button class="btn-perfil btn-admin" onclick="mostrarLoginAdmin()">
+                        <span class="icone">💼</span>
+                        <span class="texto">Administrador</span>
+                        <span class="subtexto">Gerenciar o Pet Shop</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ETAPA 2: LOGIN DO ADMINISTRADOR -->
+            <div id="etapa-admin" class="etapa-escondida">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" placeholder="Digite seu usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-login-admin">Entrar no Painel</button>
+                    
+                    <div id="error-message" class="error-message"></div>
+                    
+                    <button type="button" class="btn-voltar" onclick="voltarParaEscolha()">Voltar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_estoque.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html" class="active">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="topbar">
+            <div class="topbar-title">
+                <a href="adm_produtos.html" style="text-decoration: none; color: var(--primary-color); font-weight: 700; font-size: 14px; margin-bottom: 5px; display: block;">&larr; Voltar</a>
+                <h1>Controle de Estoque</h1>
+                <p>Acompanhe as quantidades e evite faltar produtos.</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- ALERTA DE ESTOQUE BAIXO -->
+        <div class="alerta-estoque">
+            <span class="icone-alerta">⚠️</span>
+            <div>
+                <strong>Atenção: 2 produtos estão com estoque crítico!</strong>
+                <p>Verifique a lista abaixo e faça a reposição.</p>
+            </div>
+        </div>
+
+        <!-- FILTROS E PESQUISA -->
+        <div class="barra-ferramentas">
+            <input type="text" placeholder="🔍 Pesquisar produto..." class="input-pesquisa">
+            <button class="btn-adicionar">➕ Adicionar Produto</button>
+        </div>
+
+        <!-- TABELA DE ESTOQUE -->
+        <div class="tabela-container">
+            <table class="tabela-estoque">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Preço (Un)</th>
+                        <th>Qtd Atual</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Produto Normal -->
+                    <tr>
+                        <td>
+                            <div class="info-produto">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQepPy4EVMVJtAnoKegwKKO9-XfxAyglxUcXAuXzyAcGQ&s=10" alt="Ração">
+                                <strong>Ração Premium Cães 10kg</strong>
+                            </div>
+                        </td>
+                        <td>Rações</td>
+                        <td>R$ 149,90</td>
+                        <td>25 un</td>
+                        <td><span class="tag-status normal">Normal</span></td>
+                        <td><button class="btn-acao">Editar</button></td>
+                    </tr>
+
+                    <!-- Produto com Estoque Baixo (Destaque em vermelho) -->
+                    <tr class="linha-alerta">
+                        <td>
+                            <div class="info-produto">
+                                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSHt-Hgy5L87gcJSx4cmBGUNlLQa3-PPRSD9lvmFGXFc19bGwSlmk3mpbnmekq7fcRuXg7VC8VJUiLXvsw9jBe4DskPPcWuDRikA5UxwCes_3nDiqu4RIK3xtqHLce0ThaGpFCpAU8g4A&usqp=CAc" alt="Brinquedo">
+                                <strong>Brinquedo Mordedor</strong>
+                            </div>
+                        </td>
+                        <td>Brinquedos</td>
+                        <td>R$ 35,00</td>
+                        <td><strong style="color: #e74c3c;">3 un</strong></td>
+                        <td><span class="tag-status baixo">Estoque Baixo</span></td>
+                        <td><button class="btn-acao btn-repor">Repor</button></td>
+                    </tr>
+
+                    <!-- Produto Normal -->
+                    <tr>
+                        <td>
+                            <div class="info-produto">
+                                <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=400&auto=format&fit=crop" alt="Shampoo">
+                                <strong>Shampoo Neutro 500ml</strong>
+                            </div>
+                        </td>
+                        <td>Higiene</td>
+                        <td>R$ 45,00</td>
+                        <td>12 un</td>
+                        <td><span class="tag-status normal">Normal</span></td>
+                        <td><button class="btn-acao">Editar</button></td>
+                    </tr>
+
+                    <!-- Produto com Estoque Baixo -->
+                    <tr class="linha-alerta">
+                        <td>
+                            <div class="info-produto">
+                                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=400&auto=format&fit=crop" alt="Escova">
+                                <strong>Escova de Pelos</strong>
+                            </div>
+                        </td>
+                        <td>Higiene</td>
+                        <td>R$ 29,90</td>
+                        <td><strong style="color: #e74c3c;">4 un</strong></td>
+                        <td><span class="tag-status baixo">Estoque Baixo</span></td>
+                        <td><button class="btn-acao btn-repor">Repor</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <script src="../js/adm_estoque.js"></script>
+</body>
+</html>

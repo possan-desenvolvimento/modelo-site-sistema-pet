@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link rel="stylesheet" href="../css/adm_clientes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html">Visão Geral</a>
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html">Produtos / Estoque</a>
+            <a href="adm_clientes.html" class="active">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h1>Gestão de Clientes</h1>
+                <p>Conheça seus clientes e traga-os de volta.</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- CARDS DE RESUMO -->
+        <div class="dashboard-cards">
+            <div class="card-dash">
+                <h3>Total de Clientes</h3>
+                <p class="numero">158</p>
+                <span class="variacao positiva">↑ 12 novos este mês</span>
+            </div>
+            <div class="card-dash">
+                <h3>Clientes Ativos</h3>
+                <p class="numero">132</p>
+                <span class="variacao neutra">Visitaram nos últimos 30 dias</span>
+            </div>
+            <div class="card-dash" style="border-bottom-color: #e74c3c;">
+                <h3>Inativos (Risco)</h3>
+                <p class="numero">26</p>
+                <span class="variacao negativa">Não voltam há + de 30 dias</span>
+            </div>
+        </div>
+
+        <!-- BARRA DE FERRAMENTAS -->
+        <div class="barra-ferramentas">
+            <input type="text" placeholder="🔍 Pesquisar cliente por nome ou telefone..." class="input-pesquisa">
+            <button class="btn-adicionar" onclick="alert('Abrir modal de novo cliente')">➕ Novo Cliente</button>
+        </div>
+
+        <!-- TABELA DE CLIENTES -->
+        <div class="tabela-container">
+            <table class="tabela-clientes">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Contato</th>
+                        <th>Última Visita</th>
+                        <th>Total Gasto</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Cliente Ativo -->
+                    <tr>
+                        <td>
+                            <div class="info-cliente">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João" class="avatar-cliente">
+                                <div>
+                                    <strong>João Silva</strong>
+                                    <span>Tutor do Thor (Golden Retriever)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>(11) 98765-4321</td>
+                        <td>Há 2 dias</td>
+                        <td>R$ 1.250,00</td>
+                        <td><span class="tag-status ativo">Ativo</span></td>
+                        <td><button class="btn-acao">Ver Perfil</button></td>
+                    </tr>
+
+                    <!-- Cliente Inativo (Risco) -->
+                    <tr class="linha-risco">
+                        <td>
+                            <div class="info-cliente">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria" class="avatar-cliente">
+                                <div>
+                                    <strong>Maria Oliveira</strong>
+                                    <span>Tutora da Mel (Poodle)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>(11) 91234-5678</td>
+                        <td><strong style="color: #e74c3c;">Há 45 dias</strong></td>
+                        <td>R$ 480,00</td>
+                        <td><span class="tag-status inativo">Inativo</span></td>
+                        <td>
+                            <button class="btn-acao btn-whatsapp" onclick="abrirModalDisparo('Maria Oliveira', '(11) 91234-5678', 'Mel')">
+                                Enviar Promoção
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- Cliente Ativo -->
+                    <tr>
+                        <td>
+                            <div class="info-cliente">
+                                <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Carlos" class="avatar-cliente">
+                                <div>
+                                    <strong>Carlos Souza</strong>
+                                    <span>Tutor do Rex (Pastor Alemão)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>(11) 97777-8888</td>
+                        <td>Há 10 dias</td>
+                        <td>R$ 890,00</td>
+                        <td><span class="tag-status ativo">Ativo</span></td>
+                        <td><button class="btn-acao">Ver Perfil</button></td>
+                    </tr>
+
+                    <!-- Cliente Inativo -->
+                    <tr class="linha-risco">
+                        <td>
+                            <div class="info-cliente">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Fernanda" class="avatar-cliente">
+                                <div>
+                                    <strong>Fernanda Lima</strong>
+                                    <span>Tutora da Luna (Shih Tzu)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>(11) 96666-5555</td>
+                        <td><strong style="color: #e74c3c;">Há 62 dias</strong></td>
+                        <td>R$ 310,00</td>
+                        <td><span class="tag-status inativo">Inativo</span></td>
+                        <td>
+                            <button class="btn-acao btn-whatsapp" onclick="abrirModalDisparo('Fernanda Lima', '(11) 96666-5555', 'Luna')">
+                                Enviar Promoção
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- MODAL DE DISPARO DE PROMOÇÃO -->
+    <div id="modalDisparo" class="modal-disparo">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalDisparo()">&times;</span>
+            <div class="icone-modal">🎁</div>
+            <h2>Enviar Promoção via WhatsApp</h2>
+            <p>A mensagem abaixo será enviada para <strong id="nomeDestinatario"></strong>.</p>
+            
+            <div class="preview-mensagem">
+                <p>Olá, <span id="nomeMensagem"></span>! Sentimos sua falta por aqui. 🐾</p>
+                <p>Que tal trazer a(o) <strong id="nomePet"></strong> para um banho nesta semana?</p>
+                <p>Preparamos um cupom especial de <strong>15% de desconto</strong> para vocês!</p>
+                <p>Clique aqui para agendar: [Link do Site]</p>
+            </div>
+
+            <button class="btn-enviar-whats" onclick="enviarWhatsApp()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Wpp" width="20">
+                Enviar Mensagem
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/adm_clientes.js"></script>
+</body>
+</html>

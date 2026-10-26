@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Pet Shop Admin</title>
+    <script defer src="../js/idiomas.js"></script>
+    <script defer src="../js/preferencias.js"></script>
+    <link rel="stylesheet" href="../css/adm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-adm">🐾 Pet Admin</div>
+        <nav class="menu-adm">
+            <a href="adm.html" class="active">Visão Geral</a>            
+            <a href="adm_agendamentos.html">Agendamentos</a>
+            <a href="adm_produtos.html">Produtos / Estoque</a>
+            <a href="adm_clientes.html">Clientes</a>
+            <a href="adm_financeiro.html">Financeiro</a>
+            <a href="adm_configuracoes.html">Configurações</a>
+        </nav>
+        <button class="btn-sair" onclick="sairAdmin()">Sair do Sistema</button>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h1>Visão Geral</h1>
+                <p>Acompanhe os números do seu negócio.</p>
+            </div>
+            <div class="user-info">
+                <span>Olá, Administrador</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- FILTROS DE DATA -->
+        <div class="filtros-painel">
+            <div class="filtro-group">
+                <label>Mês</label>
+                <select id="selectMes">
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10" selected>Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+            <div class="filtro-group">
+                <label>Ano</label>
+                <select id="selectAno">
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026" selected>2026</option>
+                    <option value="2027">2027</option>
+                </select>
+            </div>
+            <button class="btn-consultar" onclick="consultarDados()">Consultar</button>
+            <span class="update-text">Atualizado agora mesmo</span>
+        </div>
+
+        <!-- CARDS DE MÉTRICAS -->
+        <div class="dashboard-cards">
+            <div class="card-dash">
+                <h3>Vendas no Mês</h3>
+                <p class="numero">R$ 4.500,00</p>
+                <span class="variacao positiva">↑ 12% vs mês anterior</span>
+            </div>
+            <div class="card-dash">
+                <h3>Serviços Realizados</h3>
+                <p class="numero">128</p>
+                <span class="variacao positiva">↑ 5% vs mês anterior</span>
+            </div>
+            <div class="card-dash">
+                <h3>Novos Clientes</h3>
+                <p class="numero">7</p>
+                <span class="variacao neutra">- igual ao mês anterior</span>
+            </div>
+            <div class="card-dash">
+                <h3>Agendamentos Hoje</h3>
+                <p class="numero">5</p>
+                <span class="variacao">Restam 3 horários livres</span>
+            </div>
+        </div>
+
+        <!-- GRÁFICOS -->
+        <div class="graficos-container">
+            <div class="card-grafico">
+                <div class="grafico-header">
+                    <h2>Entradas e Saídas</h2>
+                    <p>Realizado por data de pagamento no período</p>
+                </div>
+                <div class="grafico-barras">
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>1</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>2</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 60%;"></div><span>3</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 30%;"></div><span>4</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 80%;"></div><span>5</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 50%;"></div><span>6</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>7</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 70%;"></div><span>8</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 90%;"></div><span>9</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>10</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 60%;"></div><span>11</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 30%;"></div><span>12</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 100%;"></div><span>13</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 80%;"></div><span>14</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>15</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 50%;"></div><span>16</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 10%;"></div><span>17</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>18</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 70%;"></div><span>19</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 30%;"></div><span>20</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>21</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 10%;"></div><span>22</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 15%;"></div><span>23</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 5%;"></div><span>24</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>25</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 60%;"></div><span>26</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>27</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 80%;"></div><span>28</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 10%;"></div><span>29</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 20%;"></div><span>30</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 30%;"></div><span>31</span></div>
+                </div>
+            </div>
+
+            <div class="card-grafico">
+                <div class="grafico-header">
+                    <h2>Novos Clientes</h2>
+                    <p>Cadastros por dia no período selecionado</p>
+                </div>
+                <div class="grafico-barras">
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>1</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>2</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>3</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>4</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>5</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>6</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>7</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>8</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>9</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>10</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>11</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 60%;"></div><span>12</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 60%;"></div><span>13</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>14</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>15</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>16</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>17</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>18</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>19</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>20</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>21</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>22</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 40%;"></div><span>23</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>24</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>25</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>26</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>27</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>28</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>29</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>30</span></div>
+                    <div class="barra-wrapper"><div class="barra azul" style="height: 0%;"></div><span>31</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/adm.js"></script>
+</body>
+</html>

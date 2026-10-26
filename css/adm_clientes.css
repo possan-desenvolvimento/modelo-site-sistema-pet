@@ -1,0 +1,163 @@
+/* REUTILIZANDO ESTRUTURAS DO adm.css */
+/* Adicionando apenas o específico para a tela de clientes */
+
+.variacao.negativa { color: #e74c3c; }
+
+/* BARRA DE FERRAMENTAS */
+.barra-ferramentas {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.input-pesquisa {
+    width: 400px;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+.input-pesquisa:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(0, 188, 212, 0.1); }
+.btn-adicionar {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-adicionar:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+
+/* TABELA */
+.tabela-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    overflow-x: auto; /* Para telas menores */
+}
+.tabela-clientes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+}
+.tabela-clientes th {
+    background-color: #f8f9fa;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+}
+.tabela-clientes td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    color: var(--dark-bg);
+    font-size: 14px;
+}
+.tabela-clientes tr:last-child td { border-bottom: none; }
+.tabela-clientes tr:hover { background-color: #fafafa; }
+
+/* LINHA DE RISCO (INATIVOS) */
+.linha-risco { background-color: #fff9f9; }
+.linha-risco:hover { background-color: #ffebeb !important; }
+
+/* INFO CLIENTE */
+.info-cliente { display: flex; align-items: center; gap: 15px; }
+.avatar-cliente { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #eee; }
+.info-cliente strong { display: block; font-size: 15px; color: var(--dark-bg); margin-bottom: 3px; }
+.info-cliente span { font-size: 12px; color: var(--text-gray); }
+
+/* TAGS STATUS */
+.tag-status { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-status.ativo { background-color: #e8f5e9; color: #2e7d32; }
+.tag-status.inativo { background-color: #ffebee; color: #c62828; }
+
+/* BOTÕES AÇÃO */
+.btn-acao {
+    background-color: #f4f6f9;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 12px;
+    color: var(--text-gray);
+}
+.btn-acao:hover { background-color: #e0e0e0; color: var(--dark-bg); }
+
+.btn-whatsapp { background-color: color-mix(in srgb, var(--primary-color) 12%, white); color: var(--primary-dark); }
+.btn-whatsapp:hover { background-color: var(--primary-color); color: #fff; }
+
+/* MODAL DE DISPARO */
+.modal-disparo {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(44, 62, 80, 0.8);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease-out;
+}
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.close { position: absolute; top: 15px; right: 20px; color: #333; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.close:hover { color: #e74c3c; }
+.icone-modal { font-size: 50px; margin-bottom: 15px; }
+.modal-content h2 { font-size: 24px; color: var(--dark-bg); margin-bottom: 10px; }
+.modal-content > p { color: var(--text-gray); font-size: 14px; margin-bottom: 20px; }
+
+.preview-mensagem {
+    background-color: #e5ddd5; /* Fundo de conversa do WhatsApp */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    position: relative;
+}
+.preview-mensagem::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 20px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #e5ddd5;
+}
+
+.btn-enviar-whats {
+    width: 100%;
+    padding: 15px;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.btn-enviar-whats:hover { background-color: #128c7e; transform: scale(1.02); }

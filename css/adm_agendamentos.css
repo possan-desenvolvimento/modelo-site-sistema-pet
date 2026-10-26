@@ -1,0 +1,144 @@
+/* LAYOUT SUPERIOR (Calendário e Agenda) */
+.agendamentos-top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+/* LAYOUT INFERIOR (Métricas) */
+.agendamentos-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* ESTILOS DO CARD DO CALENDÁRIO */
+.card-calendario {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendario-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.calendario-header h2 { font-size: 22px; color: var(--dark-bg); text-transform: capitalize; }
+.calendario-nav { display: flex; gap: 10px; }
+.calendario-nav button { 
+    background: #f4f6f9; 
+    border: none; 
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 16px; 
+    color: var(--text-gray); 
+    transition: 0.3s; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calendario-nav button:hover { background-color: var(--primary-color); color: #fff; }
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.dia-semana { font-size: 14px; font-weight: 700; color: var(--text-gray); margin-bottom: 15px; }
+.dia-mes { 
+    padding: 20px 0; 
+    font-size: 16px; 
+    color: var(--dark-bg); 
+    border-radius: 12px; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+}
+.dia-mes:hover:not(.vazio) { background-color: #f4f6f9; border-color: #e0e0e0; }
+.dia-mes.vazio { cursor: default; }
+.dia-mes.hoje { background-color: var(--primary-color); color: #fff; font-weight: 900; box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3); }
+
+/* ESTILOS DO CARD DA AGENDA */
+.card-agenda {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    padding: 25px;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.card-agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.card-agenda-header h2 { font-size: 18px; color: var(--dark-bg); }
+.data-destaque { background-color: var(--primary-color); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 15px; }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #eee;
+}
+
+.timeline-item { display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; }
+.timeline-time { min-width: 45px; font-weight: 700; font-size: 13px; color: var(--text-gray); margin-right: 15px; margin-top: 5px; }
+.timeline-content { background-color: #f8f9fa; padding: 15px; border-radius: 10px; flex: 1; border-left: 4px solid var(--primary-color); position: relative; z-index: 2; }
+.timeline-content h3 { font-size: 14px; color: var(--dark-bg); margin-bottom: 5px; }
+.timeline-content p { font-size: 12px; color: var(--text-gray); }
+
+.status { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 5px 10px; border-radius: 15px; margin-left: 10px; margin-top: 10px; white-space: nowrap; }
+.status.concluido { background-color: #e8f5e9; color: #2e7d32; }
+.status.andamento { background-color: #fff3e0; color: #f57c00; }
+.status.agendado { background-color: #e3f2fd; color: #1976d2; }
+
+/* ESTILOS DOS CARDS DE MÉTRICAS INFERIORES */
+.card-metrica {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    padding: 25px;
+    border-bottom: 4px solid var(--primary-color);
+}
+.card-metrica h2 { font-size: 16px; color: var(--dark-bg); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.lista-mais-agendados { display: flex; flex-direction: column; gap: 15px; }
+.item-agendado { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; color: var(--dark-bg); padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
+.item-agendado:last-child { border-bottom: none; padding-bottom: 0; }
+.porcentagem { color: var(--primary-color); font-weight: 900; }
+
+.resumo-dia { display: flex; flex-direction: column; gap: 12px; }
+.resumo-item { display: flex; justify-content: space-between; font-size: 14px; color: var(--text-gray); font-weight: 600; }
+.resumo-item strong { color: var(--dark-bg); font-size: 16px; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    .agendamentos-bottom-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 1024px) {
+    .agendamentos-top-grid { grid-template-columns: 1fr; }
+    .card-agenda { max-height: none; }
+    .agendamentos-bottom-grid { grid-template-columns: 1fr; }
+}
